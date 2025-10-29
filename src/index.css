@@ -8,89 +8,139 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Ancient Egyptian Color Palette */
+    --background: 40 38% 94%;
+    --foreground: 30 25% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 45% 97%;
+    --card-foreground: 30 25% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 45% 97%;
+    --popover-foreground: 30 25% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Gold - Primary pharaonic accent */
+    --primary: 43 74% 52%;
+    --primary-foreground: 40 38% 94%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Turquoise - Secondary mystical accent */
+    --secondary: 180 100% 27%;
+    --secondary-foreground: 40 38% 94%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Dark brown - Temple stone */
+    --muted: 30 28% 21%;
+    --muted-foreground: 40 20% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent gold glow */
+    --accent: 45 85% 60%;
+    --accent-foreground: 30 25% 20%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 38% 94%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 25% 85%;
+    --input: 40 30% 90%;
+    --ring: 43 74% 52%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(43 74% 52%) 0%, hsl(38 68% 45%) 100%);
+    --gradient-sand: linear-gradient(180deg, hsl(40 38% 94%) 0%, hsl(40 32% 88%) 100%);
+    --gradient-temple: linear-gradient(180deg, hsl(30 28% 21%) 0%, hsl(30 20% 15%) 100%);
+    
+    /* Glows & Shadows */
+    --glow-gold: 0 0 30px hsla(43 74% 52% / 0.4);
+    --shadow-temple: 0 10px 40px hsla(30 28% 21% / 0.3);
+    --shadow-papyrus: 0 4px 20px hsla(40 25% 85% / 0.5);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 30 28% 21%;
+    --foreground: 40 38% 94%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 30 25% 18%;
+    --card-foreground: 40 38% 94%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 25% 18%;
+    --popover-foreground: 40 38% 94%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 43 74% 52%;
+    --primary-foreground: 30 28% 21%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 180 100% 27%;
+    --secondary-foreground: 40 38% 94%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 20% 15%;
+    --muted-foreground: 40 20% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 85% 60%;
+    --accent-foreground: 30 28% 21%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 38% 94%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 30 20% 30%;
+    --input: 30 20% 25%;
+    --ring: 43 74% 52%;
+  }
+}
+
+/* Custom Keyframes */
+@keyframes float-hieroglyph {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes rotate-ankh {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px hsla(43 74% 52% / 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px hsla(43 74% 52% / 0.7));
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scarab-crawl {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
   }
 }
 
@@ -101,5 +151,69 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Cinzel', 'Georgia', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 600;
+  }
+}
+
+/* Custom Utility Classes */
+@layer utilities {
+  .animate-float-hieroglyph {
+    animation: float-hieroglyph 6s ease-in-out infinite;
+  }
+
+  .animate-rotate-ankh {
+    animation: rotate-ankh 20s linear infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-scarab-crawl {
+    animation: scarab-crawl 30s linear infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-sand {
+    background: var(--gradient-sand);
+  }
+
+  .gradient-temple {
+    background: var(--gradient-temple);
+  }
+
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-gold {
+    box-shadow: var(--glow-gold);
+  }
+
+  .shadow-temple {
+    box-shadow: var(--shadow-temple);
+  }
+
+  .shadow-papyrus {
+    box-shadow: var(--shadow-papyrus);
   }
 }
