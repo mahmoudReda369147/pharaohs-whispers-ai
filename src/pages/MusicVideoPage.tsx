@@ -1,7 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, Music, Video } from "lucide-react";
+import { Play, Music, Video, Maximize2 } from "lucide-react";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 interface MediaItem {
   id: string;
@@ -80,6 +81,17 @@ const mediaItems: MediaItem[] = [
 ];
 
 const MusicVideoPage = () => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const handleFullscreen = () => {
+    const videoElement = document.getElementById('featured-video') as HTMLVideoElement;
+    if (videoElement) {
+      if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-sand">
       {/* Floating Background Hieroglyphs */}
@@ -116,6 +128,94 @@ const MusicVideoPage = () => {
             <div className="h-px w-32 bg-gradient-to-r from-transparent to-primary" />
             <span className="text-primary text-3xl">𓂀</span>
             <div className="h-px w-32 bg-gradient-to-l from-transparent to-primary" />
+          </div>
+        </div>
+
+        {/* Featured Video Section */}
+        <div className="mb-20 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-cinzel font-bold text-foreground mb-3">
+              Featured: Ancient Egypt Experience
+            </h2>
+            <p className="text-muted-foreground">
+              A majestic journey through the wonders of ancient civilization
+            </p>
+          </div>
+
+          <Card className="relative overflow-hidden bg-gradient-temple border-4 border-primary/50 shadow-temple">
+            {/* Decorative Corner Elements */}
+            <div className="absolute top-4 left-4 text-2xl text-primary/40 z-10">𓄹</div>
+            <div className="absolute top-4 right-4 text-2xl text-primary/40 z-10">𓄺</div>
+            <div className="absolute bottom-4 left-4 text-2xl text-primary/40 z-10">𓄻</div>
+            <div className="absolute bottom-4 right-4 text-2xl text-primary/40 z-10">𓄼</div>
+
+            {/* Golden Frame Effect */}
+            <div className="absolute inset-0 border-8 border-primary/20 pointer-events-none z-10" />
+
+            {/* Video Container */}
+            <div className="relative aspect-video bg-muted">
+              <video
+                id="featured-video"
+                className="w-full h-full object-cover"
+                controls
+                poster="/placeholder.svg"
+              >
+                <source src="/A_majestic_ancient_202510292125.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              {/* Fullscreen Button */}
+              <button
+                onClick={handleFullscreen}
+                className="absolute bottom-20 right-4 z-20 p-3 rounded-full bg-primary/90 hover:bg-primary text-card shadow-temple transition-all duration-300 hover:scale-110"
+                title="Fullscreen"
+              >
+                <Maximize2 className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Video Info */}
+            <div className="p-6 bg-card/80 backdrop-blur-sm">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-cinzel font-bold text-foreground mb-2">
+                    Ancient Egypt: A Majestic Journey
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Immerse yourself in the grandeur of ancient Egyptian civilization. Experience the temples, pyramids, and timeless mysteries that have captivated humanity for millennia.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Video className="w-4 h-4 text-secondary" />
+                      <span className="text-primary font-semibold">AI Generated Experience</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-muted-foreground">HD Quality</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-5xl text-primary animate-glow-pulse">
+                  𓋹
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Section Divider */}
+        <div className="relative mb-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t-2 border-primary/20" />
+          </div>
+          <div className="relative flex justify-center">
+            <div className="bg-gradient-sand px-6">
+              <div className="flex items-center gap-4">
+                <span className="text-3xl text-primary">𓋹</span>
+                <span className="text-xl font-cinzel text-foreground">More Content</span>
+                <span className="text-3xl text-primary">𓋹</span>
+              </div>
+            </div>
           </div>
         </div>
 

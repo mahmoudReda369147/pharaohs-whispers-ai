@@ -1,9 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
+import { Play, Maximize2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const AncientDialogue = () => {
   const navigate = useNavigate();
+
+  const handleFullscreen = () => {
+    const videoElement = document.getElementById('ancient-dialogue-video') as HTMLVideoElement;
+    if (videoElement) {
+      if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+      }
+    }
+  };
+
   return (
     <section className="py-24 px-4 relative overflow-hidden">
       {/* Background Pattern */}
@@ -36,30 +46,32 @@ const AncientDialogue = () => {
           
           {/* Video Container */}
           <div className="relative bg-card rounded-2xl overflow-hidden shadow-temple border-4 border-primary/30">
-            {/* Placeholder for Video */}
-            <div className="aspect-video bg-muted flex items-center justify-center relative group cursor-pointer">
-              {/* Temple Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="h-full w-full flex items-center justify-center text-9xl text-primary">
-                  𓁹
-                </div>
-              </div>
+            {/* Video Player */}
+            <div className="aspect-video bg-muted relative group">
+              <video
+                id="ancient-dialogue-video"
+                className="w-full h-full object-cover"
+                controls
+               
+              >
+                <source src="/A_majestic_ancient_202510292125.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
 
-              {/* Play Button */}
-              <div className="relative z-10 flex flex-col items-center gap-4">
-                <div className="w-24 h-24 rounded-full bg-primary/90 flex items-center justify-center group-hover:bg-primary transition-all duration-300 group-hover:scale-110 shadow-temple">
-                  <Play className="w-10 h-10 text-card fill-card ml-1" />
-                </div>
-                <p className="text-xl font-cinzel text-foreground">
-                  Watch Pharaohs Speak
-                </p>
-              </div>
+              {/* Fullscreen Button */}
+              <button
+                onClick={handleFullscreen}
+                className="absolute bottom-20 right-4 z-20 p-3 rounded-full bg-primary/90 hover:bg-primary text-card shadow-temple transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+                title="Fullscreen"
+              >
+                <Maximize2 className="w-5 h-5" />
+              </button>
 
-              {/* Animated Hieroglyphs on Hover */}
-              <div className="absolute top-4 left-4 text-primary text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Decorative Corner Hieroglyphs */}
+              <div className="absolute top-4 left-4 text-primary/60 text-2xl z-10 pointer-events-none">
                 𓀭
               </div>
-              <div className="absolute bottom-4 right-4 text-primary text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-20 right-20 text-primary/60 text-2xl z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 𓁛
               </div>
             </div>
@@ -67,20 +79,30 @@ const AncientDialogue = () => {
             {/* Video Info Bar */}
             <div className="bg-card/95 backdrop-blur-sm p-6 border-t border-primary/20">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                <div>
+                <div className="flex-1">
                   <h3 className="text-xl font-cinzel font-semibold text-foreground mb-1">
-                    Dialogue of Two Pharaohs
+                    Ancient Egypt: A Majestic Journey
                   </h3>
                   <p className="text-muted-foreground">
-                    Ancient Egyptian with English subtitles
+                    Experience the grandeur of pharaonic civilization in stunning detail
                   </p>
                 </div>
-                <Button 
-                  onClick={() => navigate("/select-pharaoh")}
-                  className="gradient-gold text-card font-cinzel px-8 rounded-full hover:scale-105 transition-transform duration-300"
-                >
-                  Generate Your Own Dialogue
-                </Button>
+                <div className="text-4xl text-primary animate-glow-pulse">
+                  𓁹
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <p className="text-sm text-muted-foreground">
+                    Immerse yourself in the timeless beauty and mysteries of ancient Egypt
+                  </p>
+                  <Button 
+                    onClick={() => navigate("/select-pharaoh")}
+                    className="gradient-gold text-card font-cinzel px-8 rounded-full hover:scale-105 transition-transform duration-300 whitespace-nowrap"
+                  >
+                    Chat with Pharaohs
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
