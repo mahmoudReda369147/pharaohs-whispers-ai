@@ -1,11 +1,14 @@
-import { Home, Info, MessageCircle, Mail } from "lucide-react";
+import { Home, Info, MessageCircle, Image } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  
   const navItems = [
-    { icon: Home, label: "Home", glyph: "𓉗" },
-    { icon: Info, label: "About", glyph: "𓁹" },
-    { icon: MessageCircle, label: "Chat", glyph: "𓅓" },
-    { icon: Mail, label: "Contact", glyph: "𓆃" },
+    { icon: Home, label: "Home", glyph: "𓉗", path: "/" },
+    { icon: Info, label: "About", glyph: "𓁹", path: "/about" },
+    { icon: MessageCircle, label: "Chat", glyph: "𓅓", path: "/select-pharaoh" },
+    { icon: Image, label: "Gallery", glyph: "𓋹", path: "/gallery" },
   ];
 
   return (
@@ -52,6 +55,7 @@ const Footer = () => {
               {navItems.map((item, index) => (
                 <button
                   key={index}
+                  onClick={() => navigate(item.path)}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl bg-card/10 hover:bg-card/20 border border-primary/20 hover:border-primary/40 transition-all duration-300 group"
                 >
                   <span className="text-3xl group-hover:scale-110 transition-transform">

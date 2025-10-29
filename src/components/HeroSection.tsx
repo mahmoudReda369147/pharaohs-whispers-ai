@@ -69,6 +69,7 @@ const HeroSection = () => {
         >
           <Button
             size="lg"
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             className="gradient-gold text-card font-cinzel text-lg px-10 py-7 rounded-full hover:scale-105 transition-transform duration-300 shadow-temple"
           >
             Explore the Ancient Voices

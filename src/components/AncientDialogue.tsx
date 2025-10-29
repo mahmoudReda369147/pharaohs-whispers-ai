@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AncientDialogue = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-24 px-4 relative overflow-hidden">
       {/* Background Pattern */}
@@ -74,6 +76,7 @@ const AncientDialogue = () => {
                   </p>
                 </div>
                 <Button 
+                  onClick={() => navigate("/select-pharaoh")}
                   className="gradient-gold text-card font-cinzel px-8 rounded-full hover:scale-105 transition-transform duration-300"
                 >
                   Generate Your Own Dialogue
