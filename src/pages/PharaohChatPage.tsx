@@ -198,109 +198,43 @@ const PharaohChatPage = () => {
           Choose Another Pharaoh
         </Button>
 
-        {/* Sacred Header - Pharaoh's Chamber */}
+        {/* Header Card */}
         <div className="mb-8 animate-fade-in-up">
-          <div className="relative overflow-hidden rounded-3xl" style={{
-            background: `
-              linear-gradient(135deg, 
-                hsl(var(--primary) / 0.3) 0%, 
-                hsl(var(--secondary) / 0.15) 50%, 
-                hsl(var(--primary) / 0.35) 100%
-              )
-            `,
-            boxShadow: `
-              0 0 60px hsl(var(--primary) / 0.4),
-              inset 0 2px 40px hsl(var(--primary) / 0.2),
-              0 20px 60px -10px rgba(0,0,0,0.8)
-            `,
-            border: '3px solid hsl(var(--primary) / 0.6)',
-          }}>
-            {/* Carved Border Pattern */}
-            <div className="absolute top-0 left-0 right-0 h-2" style={{
-              background: `repeating-linear-gradient(90deg, hsl(var(--primary)) 0px, transparent 2px, transparent 10px)`,
-              opacity: 0.6,
-            }} />
-            <div className="absolute bottom-0 left-0 right-0 h-2" style={{
-              background: `repeating-linear-gradient(90deg, hsl(var(--primary)) 0px, transparent 2px, transparent 10px)`,
-              opacity: 0.6,
-            }} />
-            
-            {/* Glowing Hieroglyph Corners */}
-            <div className="absolute top-4 left-4 text-4xl animate-glow-pulse" style={{ color: 'hsl(var(--primary))' }}>𓋹</div>
-            <div className="absolute top-4 right-4 text-4xl animate-glow-pulse" style={{ color: 'hsl(var(--primary))', animationDelay: '0.5s' }}>𓋹</div>
-            <div className="absolute bottom-4 left-4 text-4xl animate-glow-pulse" style={{ color: 'hsl(var(--secondary))' }}>☥</div>
-            <div className="absolute bottom-4 right-4 text-4xl animate-glow-pulse" style={{ color: 'hsl(var(--secondary))', animationDelay: '0.5s' }}>☥</div>
-
-            <div className="relative p-8 backdrop-blur-sm">
+          <Card className="relative overflow-hidden bg-card/80 backdrop-blur-xl border-2 border-primary/30 shadow-2xl">
+            <div className="relative p-8">
               <div className="flex items-center gap-6">
-                {/* Royal Pharaoh Avatar */}
+                {/* Pharaoh Avatar */}
                 <div className="relative">
-                  <div className="absolute -inset-4 rounded-full animate-glow-pulse" style={{
-                    background: `radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 70%)`,
-                    filter: 'blur(20px)',
-                  }} />
-                  <div className="relative w-28 h-28 rounded-full flex items-center justify-center text-7xl border-4 shadow-2xl" style={{
-                    background: `
-                      radial-gradient(circle at 30% 30%, 
-                        hsl(var(--primary) / 0.9) 0%, 
-                        hsl(var(--primary) / 0.6) 100%
-                      )
-                    `,
-                    borderColor: 'hsl(var(--primary))',
-                    boxShadow: `
-                      0 0 30px hsl(var(--primary) / 0.6),
-                      inset 0 2px 20px hsl(var(--primary) / 0.3)
-                    `,
-                  }}>
+                  <div className="absolute -inset-3 bg-primary/20 rounded-full blur-xl animate-glow-pulse" />
+                  <div className="relative w-24 h-24 rounded-full bg-gradient-gold flex items-center justify-center text-6xl border-4 border-primary shadow-temple">
                     {pharaoh.symbol}
                   </div>
                 </div>
                 
-                {/* Pharaoh Divine Title */}
+                {/* Pharaoh Info */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <h1 className="text-5xl font-cinzel font-bold tracking-wide" style={{
-                      background: `linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 2px 8px hsl(var(--primary) / 0.5))',
-                    }}>
+                    <h1 className="text-4xl font-cinzel font-bold text-gradient-gold">
                       {pharaoh.name}
                     </h1>
-                    <span className="text-4xl animate-rotate-ankh" style={{ 
-                      color: 'hsl(var(--primary))',
-                      filter: 'drop-shadow(0 0 10px hsl(var(--primary)))',
-                    }}>☥</span>
+                    <span className="text-3xl text-primary animate-glow-pulse">𓋹</span>
                   </div>
-                  <div className="flex items-center gap-3 mb-3" style={{ color: 'hsl(var(--primary) / 0.8)' }}>
-                    <span className="text-2xl">𓁹</span>
-                    <p className="text-xl font-cinzel tracking-wide">
-                      Divine Voice of Eternity
+                  <div className="flex items-center gap-2 text-foreground/80">
+                    <span className="text-xl">𓁹</span>
+                    <p className="text-lg font-cinzel">
+                      Keeper of Ancient Wisdom
                     </p>
                   </div>
-                  <div className="h-1 w-64 rounded-full" style={{
-                    background: `linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--primary)) 100%)`,
-                    boxShadow: `0 0 10px hsl(var(--primary) / 0.6)`,
-                  }} />
+                  <div className="mt-2 h-1 w-48 bg-gradient-to-r from-primary to-accent rounded-full" />
                 </div>
                 
-                {/* Voice Toggle Sacred Button */}
+                {/* Voice Toggle */}
                 <div className="flex flex-col gap-3">
                   <Button
                     size="lg"
+                    variant={isVoiceMode ? "default" : "outline"}
                     onClick={() => setIsVoiceMode(!isVoiceMode)}
-                    className="font-cinzel text-lg px-6 py-6 rounded-2xl transition-all duration-300"
-                    style={isVoiceMode ? {
-                      background: `linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)`,
-                      color: '#1a1410',
-                      boxShadow: `0 0 30px hsl(var(--primary) / 0.8), inset 0 2px 10px rgba(255,255,255,0.3)`,
-                      border: '2px solid hsl(var(--primary))',
-                    } : {
-                      background: 'rgba(0,0,0,0.3)',
-                      color: 'hsl(var(--primary))',
-                      border: '2px solid hsl(var(--primary) / 0.5)',
-                      boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.5)',
-                    }}
+                    className={isVoiceMode ? "gradient-gold text-card font-cinzel shadow-temple" : "border-2 border-primary/40 text-foreground hover:bg-primary/10 font-cinzel"}
                   >
                     {isVoiceMode ? <Volume2 className="w-5 h-5 mr-2" /> : <Mic className="w-5 h-5 mr-2" />}
                     <span>{isVoiceMode ? "Voice Mode" : "Text Mode"}</span>
@@ -308,35 +242,13 @@ const PharaohChatPage = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
 
-        {/* Sacred Chamber Chat Area */}
+        {/* Chat Area */}
         <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-          <div className="relative overflow-hidden rounded-3xl" style={{
-            background: `
-              linear-gradient(135deg, 
-                rgba(45, 31, 16, 0.95) 0%, 
-                rgba(74, 53, 32, 0.9) 50%, 
-                rgba(45, 31, 16, 0.95) 100%
-              )
-            `,
-            boxShadow: `
-              0 0 80px hsl(var(--primary) / 0.3),
-              inset 0 0 100px rgba(0,0,0,0.5),
-              0 20px 60px -10px rgba(0,0,0,0.9)
-            `,
-            border: '3px solid hsl(var(--primary) / 0.4)',
-          }}>
-            {/* Carved Stone Texture Overlay */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
-            }} />
-            
-            <div className="h-[550px] overflow-y-auto p-8 space-y-6 scroll-smooth scrollbar-thin" style={{ 
-              scrollbarWidth: "thin",
-              scrollbarColor: 'hsl(var(--primary) / 0.5) rgba(0,0,0,0.3)',
-            }}>
+          <Card className="relative overflow-hidden bg-card/80 backdrop-blur-xl border-2 border-primary/30 shadow-2xl">
+            <div className="h-[550px] overflow-y-auto p-8 space-y-6 scroll-smooth" style={{ scrollbarWidth: "thin" }}>
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -346,131 +258,50 @@ const PharaohChatPage = () => {
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div
-                  className={`relative group max-w-[85%] rounded-3xl p-6 transition-all duration-500 ${
-                    message.role === "user" ? "" : ""
-                  }`}
-                  style={message.role === "pharaoh" ? {
-                    background: `
-                      linear-gradient(135deg, 
-                        hsl(var(--primary) / 0.25) 0%, 
-                        hsl(var(--primary) / 0.15) 100%
-                      )
-                    `,
-                    backdropFilter: 'blur(10px)',
-                    border: '2px solid hsl(var(--primary) / 0.4)',
-                    boxShadow: `
-                      0 8px 32px rgba(0,0,0,0.4),
-                      inset 0 2px 20px hsl(var(--primary) / 0.2),
-                      0 0 40px hsl(var(--primary) / 0.2)
-                    `,
-                  } : {
-                    background: `
-                      linear-gradient(135deg, 
-                        rgba(139, 111, 78, 0.3) 0%, 
-                        rgba(160, 130, 95, 0.2) 100%
-                      )
-                    `,
-                    backdropFilter: 'blur(10px)',
-                    border: '2px solid rgba(139, 111, 78, 0.4)',
-                    boxShadow: `
-                      0 8px 32px rgba(0,0,0,0.3),
-                      inset 0 2px 15px rgba(255,255,255,0.1)
-                    `,
-                  }}
+                  className={`relative group max-w-[85%] ${
+                    message.role === "user"
+                      ? "bg-gradient-to-br from-primary/20 to-primary/10 border-2 border-primary/40"
+                      : "bg-muted/50 border-2 border-primary/20"
+                  } rounded-2xl p-5 shadow-papyrus`}
                 >
-                  {/* Hieroglyphic Border Pattern for Pharaoh */}
-                  {message.role === "pharaoh" && (
-                    <>
-                      <div className="absolute -top-1 left-4 right-4 h-1 opacity-60" style={{
-                        background: `repeating-linear-gradient(90deg, hsl(var(--primary)) 0px, transparent 2px, transparent 8px)`,
-                      }} />
-                      <div className="absolute -bottom-1 left-4 right-4 h-1 opacity-60" style={{
-                        background: `repeating-linear-gradient(90deg, hsl(var(--primary)) 0px, transparent 2px, transparent 8px)`,
-                      }} />
-                      <div className="absolute -top-3 -left-3 text-2xl animate-glow-pulse" style={{ color: 'hsl(var(--primary))' }}>𓋹</div>
-                      <div className="absolute -bottom-3 -right-3 text-2xl animate-glow-pulse" style={{ color: 'hsl(var(--primary))', animationDelay: '0.5s' }}>☥</div>
-                    </>
-                  )}
-
                   {/* Soundwave Animation for Pharaoh when speaking */}
                   {message.role === "pharaoh" && isSpeaking && (
-                    <div className="absolute -top-4 -right-4 flex items-center gap-1 rounded-full px-3 py-2 border-2 shadow-lg" style={{
-                      background: 'rgba(45, 31, 16, 0.9)',
-                      borderColor: 'hsl(var(--primary))',
-                      boxShadow: '0 0 20px hsl(var(--primary) / 0.5)',
-                    }}>
+                    <div className="absolute -top-3 -right-3 flex items-center gap-1 bg-card rounded-full px-2 py-1 border-2 border-primary shadow-lg">
                       {[...Array(4)].map((_, i) => (
                         <div
                           key={i}
-                          className="w-1 rounded-full animate-pulse"
+                          className="w-1 bg-primary rounded-full animate-pulse"
                           style={{
-                            background: 'hsl(var(--primary))',
                             height: `${Math.random() * 20 + 10}px`,
-                            animationDelay: `${i * 0.1}s`,
-                            boxShadow: '0 0 8px hsl(var(--primary))',
+                            animationDelay: `${i * 0.1}s`
                           }}
                         />
                       ))}
                     </div>
                   )}
 
-                  {/* Message Content */}
-                  <div className="relative">
-                    {message.role === "pharaoh" && (
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="text-3xl" style={{
-                          filter: 'drop-shadow(0 0 8px hsl(var(--primary)))',
-                        }}>{pharaoh.symbol}</span>
-                        <div className="flex-1 h-px" style={{
-                          background: `linear-gradient(90deg, hsl(var(--primary)) 0%, transparent 100%)`,
-                        }} />
-                        <span className="text-xs font-cinzel tracking-widest" style={{ color: 'hsl(var(--primary) / 0.7)' }}>
-                          DIVINE VOICE
-                        </span>
-                      </div>
-                    )}
-                    
-                    <p
-                      className={`font-cinzel leading-relaxed ${
-                        message.role === "pharaoh"
-                          ? "text-3xl mb-2"
-                          : "text-lg"
-                      }`}
-                      style={message.role === "pharaoh" ? {
-                        color: 'hsl(var(--primary))',
-                        textShadow: '0 2px 10px hsl(var(--primary) / 0.3)',
-                      } : {
-                        color: 'rgba(210, 180, 140, 0.95)',
-                      }}
-                    >
-                      {message.text}
-                    </p>
-                  </div>
+                  <p
+                    className={`font-cinzel mb-2 ${
+                      message.role === "pharaoh"
+                        ? "text-primary text-xl"
+                        : "text-foreground"
+                    }`}
+                  >
+                    {message.text}
+                  </p>
                   
-                  {/* Sacred Translation Section */}
                   {message.translation && (
-                    <div className="mt-4 pt-4" style={{
-                      borderTop: '1px solid hsl(var(--primary) / 0.3)',
-                    }}>
+                    <div className="mt-2 pt-2 border-t border-primary/10">
                       {message.showTranslation ? (
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Languages className="w-4 h-4" style={{ color: 'hsl(var(--secondary))' }} />
-                            <span className="text-xs font-cinzel tracking-widest" style={{ color: 'hsl(var(--secondary) / 0.8)' }}>
-                              SACRED TRANSLATION
-                            </span>
-                          </div>
-                          <p className="text-base leading-relaxed font-cinzel" style={{
-                            color: 'hsl(var(--primary) / 0.85)',
-                          }}>
+                        <div className="space-y-2">
+                          <p className="text-sm text-muted-foreground italic">
                             {message.translation}
                           </p>
                           <Button
                             size="sm"
                             variant="ghost"
                             onClick={() => toggleTranslation(index)}
-                            className="p-0 h-auto font-cinzel text-xs mt-2 hover:opacity-80 transition-opacity"
-                            style={{ color: 'hsl(var(--secondary))' }}
+                            className="text-primary hover:text-primary/80 p-0 h-auto font-normal text-xs"
                           >
                             Hide Translation
                           </Button>
@@ -480,15 +311,10 @@ const PharaohChatPage = () => {
                           size="sm"
                           variant="ghost"
                           onClick={() => toggleTranslation(index)}
-                          className="px-4 py-2 rounded-xl transition-all duration-300 font-cinzel"
-                          style={{
-                            color: 'hsl(var(--secondary))',
-                            background: 'rgba(0, 139, 139, 0.1)',
-                            border: '1px solid hsl(var(--secondary) / 0.3)',
-                          }}
+                          className="text-primary hover:text-primary/80 hover:bg-primary/10 px-3 py-1 rounded-lg font-cinzel text-xs"
                         >
                           <Languages className="w-4 h-4 mr-2" />
-                          Reveal Translation
+                          Show Translation
                         </Button>
                       )}
                     </div>
@@ -498,125 +324,58 @@ const PharaohChatPage = () => {
             ))}
           </div>
 
-          {/* Carved Stone Tablet Input */}
-          <div className="relative p-6" style={{
-            background: `
-              linear-gradient(135deg, 
-                rgba(45, 31, 16, 0.9) 0%, 
-                rgba(60, 42, 25, 0.85) 50%, 
-                rgba(45, 31, 16, 0.9) 100%
-              )
-            `,
-            borderTop: '3px solid hsl(var(--primary) / 0.4)',
-            boxShadow: 'inset 0 2px 30px rgba(0,0,0,0.6)',
-          }}>
-            {/* Sacred Divider */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 rounded-full" style={{
-              background: 'linear-gradient(135deg, hsl(var(--primary) / 0.8) 0%, hsl(var(--secondary) / 0.6) 100%)',
-              boxShadow: '0 0 20px hsl(var(--primary) / 0.6)',
-            }}>
-              <span className="text-3xl animate-glow-pulse">𓋹</span>
-            </div>
-            
-            <div className="flex gap-4">
+          {/* Input Area */}
+          <div className="p-6 border-t border-primary/20 bg-card/50 backdrop-blur-sm">
+            <div className="flex gap-3">
               <div className="flex-1 relative">
                 <Textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder={isVoiceMode ? "🎤 Speak your words to the divine..." : "✍️ Inscribe your message to the Pharaoh..."}
-                  className="min-h-[100px] resize-none rounded-2xl font-cinzel text-lg p-5 transition-all duration-300"
-                  style={{
-                    background: 'rgba(0, 0, 0, 0.4)',
-                    border: '2px solid hsl(var(--primary) / 0.4)',
-                    color: 'rgba(210, 180, 140, 0.95)',
-                    boxShadow: 'inset 0 2px 20px rgba(0,0,0,0.5)',
-                  }}
+                  placeholder="Speak your words to the Pharaoh..."
+                  className="min-h-[60px] resize-none bg-background/80 border-primary/30 focus:border-primary rounded-xl font-cinzel"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
                       e.preventDefault();
                       handleSend();
                     }
                   }}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = 'hsl(var(--primary))';
-                    e.target.style.boxShadow = '0 0 30px hsl(var(--primary) / 0.4), inset 0 2px 20px rgba(0,0,0,0.5)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = 'hsl(var(--primary) / 0.4)';
-                    e.target.style.boxShadow = 'inset 0 2px 20px rgba(0,0,0,0.5)';
-                  }}
                 />
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2">
                 {isVoiceMode && (
                   <Button
                     size="icon"
-                    className="rounded-full h-16 w-16 hover:scale-110 transition-all duration-300"
+                    className="bg-secondary hover:bg-secondary/90 text-card rounded-full h-12 w-12"
                     onClick={() => setIsSpeaking(!isSpeaking)}
-                    style={{
-                      background: 'linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary) / 0.8) 100%)',
-                      color: '#1a1410',
-                      border: '2px solid hsl(var(--secondary))',
-                      boxShadow: `
-                        0 0 30px hsl(var(--secondary) / 0.6),
-                        inset 0 2px 10px rgba(255,255,255,0.2)
-                      `,
-                    }}
                   >
-                    <Mic className="w-7 h-7" />
+                    <Mic className="w-5 h-5" />
                   </Button>
                 )}
                 <Button
                   size="icon"
                   onClick={handleSend}
-                  className="rounded-full h-16 w-16 hover:scale-110 transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%)',
-                    color: '#1a1410',
-                    border: '2px solid hsl(var(--primary))',
-                    boxShadow: `
-                      0 0 40px hsl(var(--primary) / 0.8),
-                      inset 0 2px 10px rgba(255,255,255,0.3)
-                    `,
-                  }}
+                  className="gradient-gold text-card rounded-full h-12 w-12 hover:scale-105 transition-transform"
                 >
-                  <Send className="w-7 h-7" />
+                  <Send className="w-5 h-5" />
                 </Button>
               </div>
             </div>
           </div>
-          </div>
+          </Card>
         </div>
 
-        {/* Summon Another Pharaoh - Sacred Button */}
+        {/* Summon Another Pharaoh Button */}
         <div className="text-center animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <Button
             onClick={() => navigate("/select-pharaoh")}
-            className="group relative px-12 py-7 rounded-full overflow-hidden font-cinzel text-xl shadow-2xl hover:scale-105 transition-all duration-500"
-            style={{
-              background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--primary)) 100%)',
-              backgroundSize: '200% 200%',
-              color: '#1a1410',
-              border: '3px solid hsl(var(--primary))',
-              boxShadow: `
-                0 0 60px hsl(var(--primary) / 0.8),
-                inset 0 2px 20px rgba(255,255,255,0.3),
-                0 10px 40px rgba(0,0,0,0.6)
-              `,
-              animation: 'shimmer 3s ease-in-out infinite',
-            }}
+            className="group relative px-12 py-7 rounded-full overflow-hidden gradient-gold text-card font-cinzel text-lg shadow-temple hover:scale-105 transition-all duration-300 border-2 border-primary/40"
           >
-            {/* Mystical Shimmer Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             
-            <div className="relative flex items-center gap-4">
-              <span className="text-3xl group-hover:rotate-180 transition-transform duration-700" style={{
-                filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.8))',
-              }}>☥</span>
-              <span className="tracking-wide font-bold">Summon Another Pharaoh</span>
-              <span className="text-3xl group-hover:-rotate-180 transition-transform duration-700" style={{
-                filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.8))',
-              }}>☥</span>
+            <div className="relative flex items-center gap-3">
+              <span className="text-2xl group-hover:rotate-12 transition-transform duration-300">𓁹</span>
+              <span>Summon Another Pharaoh</span>
+              <span className="text-2xl group-hover:-rotate-12 transition-transform duration-300">𓁹</span>
             </div>
           </Button>
         </div>
